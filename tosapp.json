@@ -1,0 +1,94 @@
+{
+  "app_id": "libredbstudiodocker",
+  "title": "libredb-studio",
+  "image": "libredb/libredb-studio:1.2.0",
+  "repo_name": "libredbstudio",
+  "mode": "plain",
+  "container_port": 3000,
+  "category": [
+    "Development_Tools"
+  ],
+  "volumes": [
+    {
+      "host": "/Volume1/DockerAppData/libredbstudiodocker/data",
+      "container": "/app/data"
+    }
+  ],
+  "env": {
+    "TZ": "Asia/Shanghai"
+  },
+  "auth": "libredb",
+  "upstream_url": "https://github.com/libredb/libredb-studio",
+  "upstream_license": "MIT",
+  "descript": "One browser tab for PostgreSQL, MySQL, Oracle, SQL Server, MongoDB, Redis, SQLite, Couchbase, ClickHouse, Druid, DuckDB, Turso and more. An open-source SQL IDE with SSO, audit trail and AI-assisted queries MIT licensed, with nothing held back behind an enterprise wall. Packaged for TerraMaster TOS 7: the official Docker Hub image runs as a container on your NAS, keeps its data in the application data folder (so it survives restarts and updates), and is opened from its desktop icon.",
+  "release_note": "1. First release.",
+  "important": "First run: open the web UI and complete the initial setup. Data lives in /Volume1/DockerAppData/libredbstudiodocker/ and survives restarts and updates. The container runs as uid 1000, so mounted folders must be readable by that user. Needs DockerEngine; configure a registry mirror if Docker Hub is unreachable. Back up the application data folder before uninstalling with data removal. Plain HTTP on the LAN.",
+  "probe": {
+    "user_in_image": "(root)",
+    "entrypoint": [
+      "docker-entrypoint.sh"
+    ],
+    "cmd": [
+      "node",
+      "server.js"
+    ],
+    "exposed_ports": [
+      3000
+    ],
+    "declared_volumes": [],
+    "image_healthcheck": [],
+    "digest": "libredb/libredb-studio@sha256:6dfc7abe0e4e3e26c5fbd5e021c9a3f611c4c2208edf298a42f359ea04f3166a",
+    "architecture": "x86_64",
+    "platforms": [],
+    "http_client_in_image": "",
+    "trial_run": {
+      "ok": true,
+      "http_code": "307",
+      "state": "running",
+      "paths": [],
+      "host_port": 18000,
+      "log_tail": "▲ Next.js 16.4.2\n- Local:         http://[::1]:3000\n- Network:       http://[::]:3000\n✓ Ready in 0ms\n✓ Running next.config took 4ms\n\nLibreDB Studio 1.2.0  ->  http://[::1]:3000\n\n  Star the project if it helps you:\n  https://github.com/libredb/libredb-studio\n\nlibredb-studio: bind address :: (dual-stack verified - an IPv4 client connected to the wildcard IPv6 listener; set HOSTNAME to override)\nLibreDB Studio: auth bootstrap skipped (EACCES: permission denied, open '/app/data/auth-bootstrap.json')\n[WARN ] [2026-11-11T05:01:58.404Z] {route=instrumentation, path=data/sample.libredb, error=EACCES: permission denied, open 'data/sample.libredb.1.seeding.lock'} LibreDB embedded sample seeding skipped\n[WARN ] [2026-11-11T05:01:59.701Z] {route=instrumentation, path=data/sample-employees.db, durationMs=1255, error=EACCES: permission denied, copyfile '/app/seed-assets/sqlite/employee.db' -> 'data/sample-employees.db.1.seeding'} SQLite embedded sample seeding skipped",
+      "files_in_mounts": ""
+    },
+    "docker_hub": {},
+    "github": {
+      "owner": "libredb",
+      "repo": "libredb-studio",
+      "description": "One browser tab for PostgreSQL, MySQL, Oracle, SQL Server, MongoDB, Redis, SQLite, Couchbase, ClickHouse, Druid, DuckDB, Turso and more. An open-source SQL IDE with SSO, audit trail and AI-assisted queries MIT licensed, with nothing held back behind an enterprise wall.",
+      "license": "MIT",
+      "homepage": "https://libredb.org"
+    }
+  },
+  "platform": "x86_64",
+  "user": "1000:1000",
+  "publisher": "Moechz",
+  "compose_project": "libredbstudiodocker",
+  "github_repo": "libredbstudio",
+  "upstream_version": "1.2.0",
+  "release_tag_prefix": "v",
+  "version": "1.2.0-1",
+  "help": "https://github.com/Moechz/libredbstudio/issues",
+  "official": "https://github.com/libredb/libredb-studio",
+  "license": "MIT",
+  "docker_socket": false,
+  "group_add": [],
+  "healthcheck": [
+    "CMD-SHELL",
+    "node -e 'require(\"http\").get(\"http://127.0.0.1:3000/\",r=>process.exit(0)).on(\"error\",()=>process.exit(1))'"
+  ],
+  "platforms": [
+    "x86_64",
+    "aarch64"
+  ],
+  "translations": {
+    "zh-cn": {
+      "descript": "多数据库 Web 客户端，支持查询与结构浏览。",
+      "important": "首次使用请打开网页完成初始化。数据保存在 DockerAppData/libredbstudiodocker，重启和升级不会丢失。容器以 uid 1000 运行，挂载目录需对该用户可读。需要 DockerEngine；Docker Hub 不可达时先配置镜像加速。卸载并删除数据前请备份。局域网内为 HTTP。"
+    },
+    "zh-hk": {
+      "descript": "多数据库 Web 客户端，支持查询与结构浏览。",
+      "important": "首次使用請開啟網頁完成初始化。資料保存在 DockerAppData/libredbstudiodocker，重新啟動和升級不會遺失。容器以 uid 1000 運行，掛載目錄需對該使用者可讀。需要 DockerEngine；Docker Hub 不可達時先設定鏡像加速。解除安裝並刪除資料前請備份。區域網路內為 HTTP。"
+    }
+  },
+  "host_port": 8071
+}
